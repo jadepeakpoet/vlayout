@@ -1869,7 +1869,7 @@ class ExposeLinearLayoutManagerEx extends LinearLayoutManager {
 
         private Method mFindHiddenNonRemovedViewMethod;
 
-        /** start from 25.2.0, maybe earlier, this method reduce parameters from two to one */
+        /** start from 28.0.0, maybe earlier, this method reduce parameters from two to one */
         private Method mFindHiddenNonRemovedViewMethod25;
 
         private Method mIsHideMethod;

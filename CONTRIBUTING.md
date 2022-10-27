@@ -51,7 +51,7 @@ Branches
 for example:
 
 * `add new layout helper`
-* `fix #123, make compatible to recyclervew 25.2.0`
+* `fix #123, make compatible to recyclervew 28.0.0`
 * `remove abc`
 
 ## Issue
