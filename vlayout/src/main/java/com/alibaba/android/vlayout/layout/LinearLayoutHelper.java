@@ -182,7 +182,7 @@ public class LinearLayoutHelper extends BaseLayoutHelper {
             // whether this layout pass is layout to start or to end
             if (layoutState.getLayoutDirection() == VirtualLayoutManager.LayoutStateWrapper.LAYOUT_START) {
                 // fill start, from bottom to top
-                bottom = layoutState.getOffset() - startSpace - (isStartLine ? 0 : gap);
+                bottom = layoutState.getOffset() - endSpace - (isEndLine ? 0 : gap);
                 top = bottom - orientationHelper.getDecoratedMeasurement(view);
             } else {
                 // fill end, from top to bottom
