@@ -17,19 +17,19 @@
 #}
 
 -keepattributes InnerClasses
--keep class android.support.v7.widget.RecyclerView$LayoutParams {
+-keep class androidx.recyclerview.widget.RecyclerView$LayoutParams {
     *;
 }
 
--keep class android.support.v7.widget.RecyclerView$ViewHolder {
+-keep class androidx.recyclerview.widget.RecyclerView$ViewHolder {
     *;
 }
 
--keep class android.support.v7.widget.ChildHelper {
-    *;
+-keep class androidx.recyclerview.widget.ChildHelper {
+ *;
 }
 
--keep class android.support.v7.widget.RecyclerView$LayoutManager {
+-keep class androidx.recyclerview.widget.RecyclerView$LayoutManager {
     *;
 }
 
