@@ -24,13 +24,15 @@
 
 package com.alibaba.android.vlayout;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.lang.reflect.Array;
 
 
 /**
  * A Sorted list implementation that can keep items in order and also notify for changes in the
  * list
- * such that it can be bound to a {@link android.support.v7.widget.RecyclerView.Adapter
+ * such that it can be bound to a {@link RecyclerView.Adapter
  * RecyclerView.Adapter}.
  * <p>
  * It keeps items ordered using the {@link Callback#compare(Object, Object)} method and uses
@@ -490,7 +492,7 @@ public class SortedList<T> {
          * so
          * that you can change its behavior depending on your UI.
          * <p>
-         * For example, if you are using SortedList with a {@link android.support.v7.widget.RecyclerView.Adapter
+         * For example, if you are using SortedList with a {@link RecyclerView.Adapter
          * RecyclerView.Adapter}, you should
          * return whether the items' visual representations are the same or not.
          *
