@@ -44,22 +44,20 @@ By providing a custom LayoutManager to RecyclerView, VirtualLayout is able to la
 
 ### Import Library
 
-Please find the latest version in [release notes](https://github.com/alibaba/vlayout/releases). The newest version has been upload to jcenter and MavenCentral, make sure you have added at least one of these repositories. As follow:
+Please find the latest version in [release notes](https://github.com/jadepeakpoet/vlayout/releases). The newest version has been upload to jitpack, make sure you have added the repositories. As follow:
 
 For gradle:
 ``` gradle
-compile ('com.alibaba.android:vlayout:1.2.8@aar') {
-	transitive = true
-}
+implementation 'com.github.jadepeakpoet:vlayout:1.0.0'
 ```
 
 Or in maven:  
 pom.xml
 ``` xml
 <dependency>
-  <groupId>com.alibaba.android</groupId>
+  <groupId>com.github.jadepeakpoet</groupId>
   <artifactId>vlayout</artifactId>
-  <version>1.2.8</version>
+  <version>1.0.0</version>
   <type>aar</type>
 </dependency>
 ```
@@ -153,7 +151,7 @@ Add following configs in your proguard file if your app is released with proguar
 
 ![](http://img3.tbcdn.cn/L1/461/1/1b9bfb42009047f75cee08ae741505de2c74ac0a)
 
-[Demo Project](https://github.com/alibaba/vlayout/tree/master/examples)
+[Demo Project](https://github.com/jadepeakpoet/vlayout/tree/master/examples)
 
 # FAQ
 

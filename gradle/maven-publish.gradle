@@ -1,0 +1,99 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2016 Alibaba Group
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+apply plugin: "maven-publish"
+
+afterEvaluate { project ->
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId = GROUP
+                artifactId = ARTIFACT
+                version = VERSION_NAME
+                afterEvaluate {
+                    if (plugins.hasPlugin('com.android.application') || plugins.hasPlugin('com.android.library')) {
+                        from components.release
+                    } else if (plugins.hasPlugin("java")) {
+                        from components.java
+                    }
+                }
+                repositories {
+                    maven {
+                        url = "${rootProject.buildDir}/repo"
+                    }
+                }
+            }
+        }
+    }
+
+    if (plugins.hasPlugin('com.android.application') || plugins.hasPlugin('com.android.library')) {
+        task androidJavadocs(type: Javadoc) {
+            failOnError false
+            source = android.sourceSets.main.java.source
+            classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+        }
+
+        task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+            getArchiveClassifier().convention('javadoc')
+            getArchiveClassifier().set('javadoc')
+            from androidJavadocs.destinationDir
+        }
+
+        task androidSourcesJar(type: Jar) {
+            getArchiveClassifier().convention('sources')
+            getArchiveClassifier().set('sources')
+            from android.sourceSets.main.java.source
+        }
+    } else if (plugins.hasPlugin("java")) {
+        task sourcesJar(type: Jar, dependsOn: classes) {
+            getArchiveClassifier().convention('sources')
+            getArchiveClassifier().set('sources')
+            from sourceSets.main.allSource
+        }
+
+        task javadocJar(type: Jar, dependsOn: javadoc) {
+            getArchiveClassifier().convention('javadoc')
+            getArchiveClassifier().set('javadoc')
+            from javadoc.destinationDir
+        }
+    }
+
+    if (JavaVersion.current().isJava8Compatible()) {
+        allprojects {
+            tasks.withType(Javadoc) {
+                options.addStringOption('Xdoclint:none', '-quiet')
+            }
+        }
+    }
+
+    artifacts {
+        if (plugins.hasPlugin('com.android.application') || plugins.hasPlugin('com.android.library')) {
+            archives androidSourcesJar
+            archives androidJavadocsJar
+        } else if (plugins.hasPlugin("java")){
+            archives sourcesJar
+            archives javadocJar
+        }
+    }
+}

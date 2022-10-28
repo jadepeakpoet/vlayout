@@ -31,26 +31,14 @@ buildscript {
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-        mavenCentral()
         maven { url 'https://www.jitpack.io' }
-        google()
-        maven { url 'https://repo1.maven.org/maven2/' }
-        maven {url "https://objectbox.net/beta-repo/"}
         gradlePluginPortal()
-        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-        maven { url "http://oss.jfrog.org/oss-snapshot-local/" }
         mavenCentral()
         google()
-        maven{
-            url 'https://jitpack.io'
-        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'com.android.tools.build:gradle:7.3.1'
         classpath 'com.github.xfumihiro.view-inspector:view-inspector-plugin:0.1.1'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
-        classpath 'org.jfrog.buildinfo:build-info-extractor-gradle:4.0.0'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
 
@@ -60,20 +48,9 @@ allprojects {
         maven { url 'https://maven.aliyun.com/repository/public/' }
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-        mavenCentral()
         maven { url 'https://www.jitpack.io' }
         google()
-        maven { url 'https://repo1.maven.org/maven2/' }
-        maven {url "https://objectbox.net/beta-repo/"}
-        gradlePluginPortal()
-        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-        maven { url "http://oss.jfrog.org/oss-snapshot-local/" }
-        google()
-        mavenLocal()
         mavenCentral()
-        maven{
-            url 'https://jitpack.io'
-        }
+        mavenLocal()
     }
 }

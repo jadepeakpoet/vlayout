@@ -31,19 +31,13 @@ buildscript {
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-        mavenCentral()
         maven { url 'https://www.jitpack.io' }
         google()
-        maven { url 'https://repo1.maven.org/maven2/' }
-        maven {url "https://objectbox.net/beta-repo/"}
-        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-        maven { url "http://oss.jfrog.org/oss-snapshot-local/" }
         mavenCentral()
-//        jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath 'com.android.tools.build:gradle:7.3.1'
     }
 }
 
@@ -52,41 +46,10 @@ repositories {
     maven { url 'https://maven.aliyun.com/repository/public/' }
     maven { url 'https://maven.aliyun.com/repository/central' }
     maven { url 'https://maven.aliyun.com/repository/google' }
-    maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-    mavenCentral()
     maven { url 'https://www.jitpack.io' }
     google()
-    maven { url 'https://repo1.maven.org/maven2/' }
-    maven {url "https://objectbox.net/beta-repo/"}
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-    maven { url "http://oss.jfrog.org/oss-snapshot-local/" }
-//    jcenter()
+    mavenCentral()
     mavenLocal()
-}
-
-
-ext {
-    bintrayRepo = 'Tangram'
-    bintrayName = 'vlayout'
-
-    publishedGroupId = project.hasProperty('GROUP') ? GROUP : ''
-    libraryName = project.hasProperty('ARTIFACT') ? ARTIFACT : ''
-    artifact = project.hasProperty('ARTIFACT') ? ARTIFACT : ''
-
-    libraryDescription = 'Project vlayout is a powerfull LayoutManager extension for RecyclerView, it provides a group of layouts for RecyclerView. Make it able to handle a complicate situation when grid, list and other layouts in the same recyclerview.'
-
-    siteUrl = 'https://github.com/alibaba/vlayout'
-    gitUrl = 'https://github.com/alibaba/vlayout.git'
-
-    libraryVersion = project.hasProperty('VERSION_NAME') ? VERSION_NAME : ''
-
-    developerId = 'longerian'
-    developerName = 'longerian'
-    developerEmail = 'xlhongultimate@gmail.com'
-
-    licenseName = 'MIT'
-    licenseUrl = 'https://opensource.org/licenses/MIT'
-    allLicenses = ["MIT"]
 }
 
 def VERSION = System.properties['version'] ?: '10'
@@ -104,8 +67,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     buildTypes {
@@ -122,37 +85,13 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    // compile project(':extension')
-    if (project.hasProperty('useNewSupportLibrary')) {
-        compile 'com.android.support:recyclerview-v7:28.0.0'
-        compile('com.android.support:support-v4:28.0.0')
-        compile 'com.android.support:support-annotations:28.0.0'
-        compile 'com.android.support:support-compat:28.0.0'
-        compile 'com.android.support:support-core-ui:28.0.0'
-    } else {
-        compile 'com.android.support:recyclerview-v7:28.0.0'
-        compile('com.android.support:support-v4:28.0.0') {
-            exclude group: 'com.android.support', module: 'support-annotations'
-        }
-        compile 'com.android.support:support-annotations:28.0.0'
-    }
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.annotation:annotation:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.5.0'
 
-    androidTestCompile "org.robolectric:robolectric:3.0"
+    androidTestImplementation "org.robolectric:robolectric:3.0"
 }
 
+apply from: rootProject.file('gradle/maven-publish.gradle')
 
-File deployConfig = rootProject.file('deploy.gradle')
-if (deployConfig.exists()) {
-    apply from: rootProject.file('deploy.gradle')
-}
-
-//deployConfig = rootProject.file('jcenterInstall.gradle')
-//if (deployConfig.exists()) {
-//    apply from: rootProject.file('jcenterInstall.gradle')
-//}
-//
-//deployConfig = rootProject.file('jcenterDeploy.gradle')
-//if (deployConfig.exists()) {
-//    apply from: rootProject.file('jcenterDeploy.gradle')
-//}
