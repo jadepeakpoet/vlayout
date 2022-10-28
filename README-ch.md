@@ -1,4 +1,9 @@
-# 注意，该项目停止维护！！！
+# vlayout官方原作者已宣布停止维护，fork一份自己做升级和修改，目前主要修改了以下功能，碰到问题可以提issue联系我
+1. 迁移到androidx
+2. 升级插件和依赖库
+3. 把库发布到jitpack
+4. 修复LinearLayoutHelper设置margin和padding后，页面从下到上滚动导致的margin和padding显示出错问题
+5. 引用方式：implementation 'com.github.jadepeakpoet:vlayout:1.0.0'
 
 # vlayout
 

@@ -1,4 +1,9 @@
-# Attention. This project is not maintained any more !!!
+#The official original author of vlayout has announced to stop maintenance. The fork has made its own updates and modifications. At present, it mainly modifies the following functions. If you have any problems, please contact me with issue
+1. Migrate to androidx
+2. Upgrade plug-ins and dependent libraries
+3. Publish the library to jitpack
+4. Fix the problem of margin and padding display error caused by page scrolling from bottom to top after LinearLayoutHelper sets margin and padding
+5. Reference method: implementation 'com.github.jadepeakpoet:vlayout:1.0.0'
 
 # vlayout
 
