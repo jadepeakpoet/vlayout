@@ -195,7 +195,7 @@ public class LinearLayoutHelper extends BaseLayoutHelper {
 
             if (layoutState.getLayoutDirection() == VirtualLayoutManager.LayoutStateWrapper.LAYOUT_START) {
                 // fill left, from right to left
-                right = layoutState.getOffset() - startSpace - (isStartLine ? 0 : gap);
+                right = layoutState.getOffset() - endSpace - (isEndLine ? 0 : gap);
                 left = right - orientationHelper.getDecoratedMeasurement(view);
             } else {
                 // fill right, from left to right
