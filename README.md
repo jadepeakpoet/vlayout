@@ -1,5 +1,5 @@
-# Android Open Project Renovation
-# https://github.com/jadepeakpoet/AndroidProjectRenovation  
+# Android Open Project Renovation  
+https://github.com/jadepeakpoet/AndroidProjectRenovation  
 # The official original author of vlayout has announced to stop maintenance. The fork has made its own updates and modifications. At present, it mainly modifies the following functions. If you have any problems, please contact me with issue at project AndroidProjectRenovation  
 1. Migrate to androidx  
 2. Upgrade plug-ins and dependent libraries  
