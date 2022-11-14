@@ -1,4 +1,5 @@
-# vlayout官方原作者已宣布停止维护，fork一份自己做升级和修改，目前主要修改了以下功能，碰到问题可以提issue联系我
+# https://github.com/jadepeakpoet/AndroidProjectRenovation Android开源库翻新计划
+# vlayout官方原作者已宣布停止维护，fork一份自己做升级和修改，目前主要修改了以下功能，碰到问题可以在AndroidProjectRenovation工程中提issue联系我
 1. 迁移到androidx
 2. 升级插件和依赖库
 3. 把库发布到jitpack
